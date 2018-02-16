@@ -1,0 +1,25 @@
+input{
+	height:30px;
+	width:30px;
+	padding: 2px;
+	margin: 2px;
+	border:1px solid #fff;
+	font-family: Ubuntu;
+	font-size: 24px;
+	text-align: center; 
+}
+
+.sudoku{
+	margin-top:100px;
+	margin-left:100px;
+}
+
+.b3, .b5, .b7{
+	border-color: #9a9b94;
+}
+.b1, .b6, .b8{
+	border-color: #62d2a2;
+}
+.b2, .b4, .b9{
+	border-color: #fc7fb6;
+}
