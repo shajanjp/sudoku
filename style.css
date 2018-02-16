@@ -14,12 +14,10 @@ input{
 	margin-left:100px;
 }
 
-.b3, .b5, .b7{
+.b1, .b3, .b5, .b7, .b9{
 	border-color: #9a9b94;
 }
-.b1, .b6, .b8{
+
+.b2, .b4, .b6, .b8{
 	border-color: #62d2a2;
-}
-.b2, .b4, .b9{
-	border-color: #fc7fb6;
 }
