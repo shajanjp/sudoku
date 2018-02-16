@@ -1,5 +1,7 @@
+let posibilities = {};
+
 function cellValue(cell){
-	return document.getElementById(cell).value;	
+	return parseInt(document.getElementById(cell).value);	
 }
 
 function getDependedRowCells(cell){
@@ -7,7 +9,7 @@ function getDependedRowCells(cell){
 	let cells = [];
 	$(`.r${row}`).each(function() {
 		cells.push(parseInt(this.id));
-		this.value=this.id;
+		// this.value=this.id;
 	});
 	return cells;
 }
@@ -17,7 +19,7 @@ function getDependedColumnCells(cell){
 	let cells = [];
 	$(`.c${column}`).each(function() {
 		cells.push(parseInt(this.id));
-		this.value=this.id;
+		// this.value=this.id;
 	});
 	return cells;
 }
@@ -28,7 +30,7 @@ function getDependedBlockCells(cell){
 	let cells = [];
 	$(`.b${block}`).each(function() {
 		cells.push(parseInt(this.id));
-		this.value=this.id;
+		// this.value=this.id;
 	});
 	return cells;	
 }
@@ -48,12 +50,21 @@ function getDependedCells(cell){
 	return cells;
 }
 
-function findPossibilities(cell){
+function getPossibilities(cell){
+	let poss = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	
+	getDependedCells(cells).forEach((x) => {
+		if(poss.indexOf(cellValue(x)))
+			del (poss[poss.indexOf(cellValue(x))]);
+	});
 
+	// posibilities[cell] = 
 }
 
-let checkCell = 22;
+let checkCell = 36;
+
 // console.log(getDependedRowCells(checkCell));
 // console.log(getDependedColumnCells(checkCell));
 // console.log(getDependedBlockCells(checkCell));
-console.log(getDependedCells(checkCell).length);
+
+console.log(getDependedCells(checkCell));
