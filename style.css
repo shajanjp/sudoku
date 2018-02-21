@@ -10,8 +10,7 @@ input{
 }
 
 .sudoku{
-	margin-top:100px;
-	margin-left:100px;
+	margin-top: 30px;
 }
 
 .b1, .b3, .b5, .b7, .b9{
