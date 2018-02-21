@@ -76,25 +76,58 @@ function getDependedCells(cell){
 		if(cells.indexOf(c) === -1)
 			cells.push(c);
 	});	
-
 	return cells;
 }
 
 function getPossibilities(cell){
 	let poss = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-	
-	getDependedCells(cells).forEach((x) => {
-		if(poss.indexOf(cellValue(x)))
-			del (poss[poss.indexOf(cellValue(x))]);
+	getDependedCells(cell).forEach((x) => {
+		if(getCellValue(x) != "") {
+			if(poss.indexOf(getCellValue(x)) > -1) {
+				poss.splice(poss.indexOf(getCellValue(x)), 1);
+			}
+		}
 	});
 
-	// posibilities[cell] = 
+	if (poss.length == 1)
+		setCellValue(cell, poss[0]);
+
+	posibilities[cell] = poss;
+	return poss;
 }
 
-let checkCell = 36;
+function updatePossibilites(){
+	for(var cell=1; cell<82; cell++){
+		if(getCellValue(cell) == "")
+			getPossibilities(cell);
+	}
+}
 
-// console.log(getDependedRowCells(checkCell));
-// console.log(getDependedColumnCells(checkCell));
-// console.log(getDependedBlockCells(checkCell));
+function updateLoop(){
+	updatePossibilites();
+	console.log('posibilities', posibilities);
+	setTimeout(function(){ updateLoop(); }, 0);
+}
 
-console.log(getDependedCells(checkCell));
+$('#solve').on('click', function(){
+	updateLoop();
+});
+
+$('#export').on('click', function(){
+	alert("export");
+	let dump = getAllValues();
+	console.log('data dump', dump);
+});
+
+$('#prefill').on('click', function(){
+	setAllValues(sudokuDataSet[0]);
+});
+
+$('#iterate').on('click', function(){
+	updatePossibilites();
+	console.log('posibilities', posibilities);
+});
+
+$('#wildguess').on('click', function(){
+	wildGuess();
+});
