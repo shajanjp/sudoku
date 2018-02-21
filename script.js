@@ -79,6 +79,17 @@ function getDependedCells(cell){
 	return cells;
 }
 
+function wildGuess(){
+	for(var cell=1; cell<82; cell++){
+		if(posibilities[cell].length == 2){
+			console.log(`fixing first element for ${cell} as ${posibilities[cell][0]}`);
+			setCellValue(cell, posibilities[cell][0]);
+			posibilities[cell] = [posibilities[cell][0]];
+			break;
+		}
+	}
+}
+
 function getPossibilities(cell){
 	let poss = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 	getDependedCells(cell).forEach((x) => {
