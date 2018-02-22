@@ -40,12 +40,25 @@ function setAllValues(dataset){
 	}
 }
 
+function randomSudoku(){
+	return sudokuTestData[Math.floor(Math.random()*sudokuTestData.length)];
+}
+
+function fillData(){
+	let dataset = randomSudoku();
+	for(var cell=1; cell<82; cell++) {
+		if(dataset[cell-1] != 0)
+			setCellValue(cell, dataset[cell -1]);
+		else if(dataset[cell-1] == 0)
+			setCellValue(cell, '');
+	}
+}
+
 function getDependedRowCells(cell){
 	let row = $(`#${cell}`).data('row');
 	let cells = [];
 	$(`.r${row}`).each(function() {
 		cells.push(parseInt(this.id));
-		// this.value=this.id;
 	});
 	return cells;
 }
