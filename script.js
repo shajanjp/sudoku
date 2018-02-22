@@ -148,6 +148,7 @@ $('#solve').on('click', function(){
 
 $('#export').on('click', function(){
 	let dump = getAllValues();
+	console.log('Data Dump', dump);
 });
 
 $('#prefill').on('click', function(){
