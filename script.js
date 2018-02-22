@@ -145,6 +145,7 @@ $('#export').on('click', function(){
 });
 
 $('#prefill').on('click', function(){
+	fillData();
 });
 
 $('#iterate').on('click', function(){
