@@ -134,7 +134,10 @@ function updatePossibilites(){
 }
 
 $('#solve').on('click', function(){
-	updateLoop();
+	for(let i=0; i < 27; i++) {
+			console.log('updating possibilities...');
+			updatePossibilites();
+		}
 });
 
 $('#export').on('click', function(){
