@@ -47,8 +47,10 @@ function randomSudoku(){
 function fillData(){
 	let dataset = randomSudoku();
 	for(var cell=1; cell<82; cell++) {
-		if(dataset[cell-1] != 0)
+		if(dataset[cell-1] != 0){
 			setCellValue(cell, dataset[cell -1]);
+			posibilities[cell] = dataset[cell -1]
+		}
 		else if(dataset[cell-1] == 0)
 			setCellValue(cell, '');
 	}
