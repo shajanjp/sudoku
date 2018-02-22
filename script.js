@@ -11,7 +11,7 @@ function setCellValue(cell, cellValue){
 function isSolved(){
 	let solved = true;
 	for(var cell=1; cell<82; cell++){
-		if(getPossibilities(cell).length > 1)
+		if(getCellValue(cell) == "")
 			solved = false;
 	}
 	return solved;
