@@ -78,7 +78,6 @@ function getDependedBlockCells(cell){
 	let cells = [];
 	$(`.b${block}`).each(function() {
 		cells.push(parseInt(this.id));
-		// this.value=this.id;
 	});
 	return cells;	
 }
@@ -132,24 +131,15 @@ function updatePossibilites(){
 	}
 }
 
-function updateLoop(){
-	updatePossibilites();
-	console.log('posibilities', posibilities);
-	setTimeout(function(){ updateLoop(); }, 0);
-}
-
 $('#solve').on('click', function(){
 	updateLoop();
 });
 
 $('#export').on('click', function(){
-	alert("export");
 	let dump = getAllValues();
-	console.log('data dump', dump);
 });
 
 $('#prefill').on('click', function(){
-	setAllValues(sudokuDataSet[0]);
 });
 
 $('#iterate').on('click', function(){
