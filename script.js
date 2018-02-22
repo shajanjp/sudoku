@@ -8,6 +8,15 @@ function setCellValue(cell, cellValue){
 	document.getElementById(cell).value = cellValue;
 }
 
+function isSolved(){
+	let solved = true;
+	for(var cell=1; cell<82; cell++){
+		if(getPossibilities(cell).length > 1)
+			solved = false;
+	}
+	return solved;
+}
+
 function getCellValue(cell){
 	if (document.getElementById(cell).value)
 		return parseInt((document.getElementById(cell).value || false));	
