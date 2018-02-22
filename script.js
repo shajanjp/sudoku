@@ -134,10 +134,16 @@ function updatePossibilites(){
 }
 
 $('#solve').on('click', function(){
-	for(let i=0; i < 27; i++) {
+	for(let i=0; i < 81; i++) {
+		if (isSolved()){
+			console.log('solved...');
+			break;
+		}
+		else {	
 			console.log('updating possibilities...');
 			updatePossibilites();
 		}
+	}
 });
 
 $('#export').on('click', function(){
