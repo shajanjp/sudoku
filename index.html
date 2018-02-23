@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sudoku Solver</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="reset.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/components/container.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/components/button.min.css">
@@ -123,14 +124,18 @@
 
 		<br />
 
-		<button id="prefill" class="ui tiny button">Pre-fill</button>
+		<button id="prefill" class="ui tiny button">Random Sudoku</button>
 		<button id="iterate" class="ui tiny button">Iterate</button>
 		<button id="wildguess" class="ui tiny button">Wild Guess</button>
 		<button id="solve" class="ui tiny button">Solve</button>
 		<button id="export" class="ui tiny button">Export</button>
+
+		<br />
+		
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="sudoku-data-set.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>
