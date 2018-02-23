@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300');
 body{
-	background-color: #52524e;
+	background-color: #1f204c;
 }
 input{
-	height:40px;
-	width:40px;
-	padding: 2px;
-	margin: 2px;
+	color: #CCC;
+	background-color: #424392;
+	border: 3px solid #424392;
+	border-bottom: 3px solid #313378;
 	border-radius: 4px;
-	margin-bottom: 6px;
-	border: 1px solid #d4d6c8;
-	background-color: #d4d6c8;
 	font-family: Ubuntu;
 	font-size: 24px;
+	height:40px;
+	margin-bottom: 6px;
+	margin: 2px;
+	padding: 2px;
 	text-align: center; 
+	width:40px;
 }
 
 .sudoku{
