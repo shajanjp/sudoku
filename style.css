@@ -42,6 +42,14 @@ input{
 	border: 3px solid #a57675;
 	border-bottom: 3px solid #8a5e68;
 	background-color: #a57675;
+	padding: 6px 8px;
+	border-radius: 4px;
+	color: #CCC;
+	margin: 0px 2px;
+}
+
+.btn:hover{
+	cursor: pointer;
 }
 
 .main-header{
