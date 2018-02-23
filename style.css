@@ -21,12 +21,25 @@ input{
 }
 
 .b1, .b3, .b5, .b7, .b9{
-	background-color: #9a9b94;
-	border-color: #9a9b94;
+	border: 3px solid #2d2e68;
+	border-bottom: 3px solid #26285d;
+	background-color: #2d2e68;
 }
 
 .b2, .b4, .b6, .b8{
 	/*border-color: #62d2a2;*/
+}
+
+.err{
+	border: 3px solid #f25467;
+	border-bottom: 3px solid #c94253;
+	background-color: #f25467;
+}
+
+.btn{
+	border: 3px solid #a57675;
+	border-bottom: 3px solid #8a5e68;
+	background-color: #a57675;
 }
 
 .main-header{
