@@ -1,8 +1,4 @@
 let posibilities = {}
-let in_cells = {}
-let sudokuDataSet = []
-let is_finished = 0
-let cleanState = ['000000000000000000000000000000000000000000000000000000000000000000000000000000000']
 
 function setCellValue (cell, cellValue) {
   document.getElementById(cell).value = cellValue
