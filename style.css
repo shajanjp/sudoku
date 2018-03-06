@@ -52,7 +52,22 @@ input{
 	cursor: pointer;
 }
 
-.main-header{
+footer {
+	padding:15px;
+
+}
+
+footer p {
+	color: #CCC;
+	text-align: center;
+}
+
+footer p a {
+	text-decoration: none; 
+	color: white;
+}
+
+.main-header {
 	margin-top: 30px;
 	font-size: 3em;
 	font-family: 'Quicksand', sans-serif;
