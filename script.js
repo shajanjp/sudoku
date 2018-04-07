@@ -30,15 +30,6 @@ function getAllValues() {
   return values;
 }
 
-function setAllValues(dataset) {
-  for (let cell = 1; cell < 82; cell++) {
-    if (dataset[cell]) {
- setCellValue(cell, dataset[cell]);
-}
-    posibilities[cell] = [dataset[cell]];
-  }
-}
-
 function randomSudoku() {
   return sudokuTestData[Math.floor(Math.random() * sudokuTestData.length)];
 }
