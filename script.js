@@ -34,8 +34,10 @@ function randomSudoku() {
   return sudokuTestData[Math.floor(Math.random() * sudokuTestData.length)];
 }
 
-function fillData() {
-  let dataset = randomSudoku();
+function fillData(random = false) {
+  const newSudokuData = Array(81).fill(0).join("");
+  let dataset = random ? randomSudoku() : newSudokuData;
+  
   for (let cell = 1; cell < 82; cell++) {
     if (dataset[cell - 1] != 0) {
       setCellValue(cell, dataset[cell - 1]);
@@ -155,6 +157,10 @@ $("#export").on("click", function () {
 });
 
 $("#prefill").on("click", function () {
+  fillData(true);
+});
+
+$("#new").on("click", function () {
   fillData();
 });
 
