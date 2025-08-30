@@ -7,19 +7,19 @@ function setCellValue(cell, cellValue) {
 function isSolved() {
   let solved = true;
   for (let cell = 1; cell < 82; cell++) {
-    if (getCellValue(cell) == '') {
- solved = false;
-}
+    if (getCellValue(cell) == "") {
+      solved = false;
+    }
   }
   return solved;
 }
 
 function getCellValue(cell) {
   if (document.getElementById(cell).value) {
- return parseInt((document.getElementById(cell).value || false));
-} else {
- return '';
-}
+    return parseInt(document.getElementById(cell).value || false);
+  } else {
+    return "";
+  }
 }
 
 function getAllValues() {
@@ -41,33 +41,33 @@ function fillData() {
       setCellValue(cell, dataset[cell - 1]);
       posibilities[cell] = dataset[cell - 1];
     } else if (dataset[cell - 1] == 0) {
- setCellValue(cell, '');
-}
+      setCellValue(cell, "");
+    }
   }
 }
 
 function getDependedRowCells(cell) {
-  let row = $(`#${cell}`).data('row');
+  let row = $(`#${cell}`).data("row");
   let cells = [];
-  $(`.r${row}`).each(function() {
+  $(`.r${row}`).each(function () {
     cells.push(parseInt(this.id));
   });
   return cells;
 }
 
 function getDependedColumnCells(cell) {
-  let column = $(`#${cell}`).data('column');
+  let column = $(`#${cell}`).data("column");
   let cells = [];
-  $(`.c${column}`).each(function() {
+  $(`.c${column}`).each(function () {
     cells.push(parseInt(this.id));
   });
   return cells;
 }
 
 function getDependedBlockCells(cell) {
-  let block = $(`#${cell}`).data('block');
+  let block = $(`#${cell}`).data("block");
   let cells = [];
-  $(`.b${block}`).each(function() {
+  $(`.b${block}`).each(function () {
     cells.push(parseInt(this.id));
   });
   return cells;
@@ -77,14 +77,14 @@ function getDependedCells(cell) {
   let cells = getDependedBlockCells(cell);
   getDependedRowCells(cell).forEach((r) => {
     if (cells.indexOf(r) === -1) {
- cells.push(r);
-}
+      cells.push(r);
+    }
   });
 
   getDependedColumnCells(cell).forEach((c) => {
     if (cells.indexOf(c) === -1) {
- cells.push(c);
-}
+      cells.push(c);
+    }
   });
   return cells;
 }
@@ -92,7 +92,9 @@ function getDependedCells(cell) {
 function wildGuess() {
   for (let cell = 1; cell < 82; cell++) {
     if (posibilities[cell].length == 2) {
-      console.log(`fixing first element for ${cell} as ${posibilities[cell][0]}`);
+      console.log(
+        `fixing first element for ${cell} as ${posibilities[cell][0]}`,
+      );
       setCellValue(cell, posibilities[cell][0]);
       posibilities[cell] = [posibilities[cell][0]];
       break;
@@ -100,10 +102,11 @@ function wildGuess() {
   }
 }
 
-function getPossibilities(cell) {
+async function findPossibilitiesAndSetValueIfSure(cell) {
   let poss = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   getDependedCells(cell).forEach((x) => {
-    if (getCellValue(x) != '') {
+    if (getCellValue(x) != "") {
       if (poss.indexOf(getCellValue(x)) > -1) {
         poss.splice(poss.indexOf(getCellValue(x)), 1);
       }
@@ -111,47 +114,55 @@ function getPossibilities(cell) {
   });
 
   if (poss.length == 1) {
- setCellValue(cell, poss[0]);
-}
+    await wait(100);
+    setCellValue(cell, poss[0]);
+  }
 
   posibilities[cell] = poss;
+
   return poss;
 }
 
-function updatePossibilites() {
+async function updatePossibilites() {
   for (let cell = 1; cell < 82; cell++) {
-    if (getCellValue(cell) == '') {
- getPossibilities(cell);
-}
+    if (getCellValue(cell) == "") {
+      await findPossibilitiesAndSetValueIfSure(cell);
+    }
   }
 }
 
-$('#solve').on('click', function() {
+async function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+$("#solve").on("click", async function () {
   for (let i = 0; i < 81; i++) {
     if (isSolved()) {
-      console.log('solved...');
+      console.log("solved...");
       break;
     } else {
-      console.log('updating possibilities...');
-      updatePossibilites();
+      console.log("updating possibilities...");
+      await updatePossibilites();
     }
   }
 });
 
-$('#export').on('click', function() {
+$("#export").on("click", function () {
   let dump = getAllValues();
-  console.log('Data Dump', dump);
+  console.log("Data Dump", dump);
 });
 
-$('#prefill').on('click', function() {
+$("#prefill").on("click", function () {
   fillData();
 });
 
-$('#iterate').on('click', function() {
-  updatePossibilites();
-  console.log('posibilities', posibilities);
+$("#iterate").on("click", async function () {
+  await updatePossibilites();
+  console.log("posibilities", posibilities);
 });
 
-$('#wildguess').on('click', function() {
+$("#wildguess").on("click", function () {
   wildGuess();
 });
